@@ -27,7 +27,12 @@ body{
   border-radius: 5px;
 }
 
-
+// ★.days, .hours, .minutes, .seconds {
+  display: inline-block;
+  padding: 10px;
+  width: 80px;
+  border-radius: 5px;
+}
 
 .days {
   background: #eeeeee;
@@ -128,9 +133,9 @@ let timer = setInterval(function() {
 
   // display
   document.getElementById("days").innerHTML=days
-  document.getElementById("hours").innerHTML=hours
-  document.getElementById("minutes").innerHTML=minutes
-  document.getElementById("seconds").innerHTML=seconds
+  // ★document.getElementById("hours").innerHTML=hours
+  // ★document.getElementById("minutes").innerHTML=minutes
+  // ★document.getElementById("seconds").innerHTML=seconds
 
 
 
