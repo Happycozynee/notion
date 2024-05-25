@@ -20,8 +20,11 @@ body {
   text-align: center;
   text-transform: uppercase;
   font-family: 'Lato', sans-serif;
-  font-size: .7em;
+  font-size: 1em; /* 글자 크기 */
   letter-spacing: 5px;
+  position: relative; /* 상대적인 위치 지정 */
+  top: 50%; /* 상단 위치를 부모 요소의 50% 지점으로 설정 */
+  transform: translateY(50%); /* 요소를 자기 자신의 높이의 50%만큼 아래로 이동 */
 }
 
 .days {
@@ -36,22 +39,15 @@ body {
   box-sizing: border-box; /* 패딩과 테두리를 요소의 전체 크기에 포함 */
 }
 
-.numbers {
+.numbers, #timer {
   font-family: 'Montserrat', sans-serif;
-  color: #FFFFFF; /* 폰트 색상 */
-  font-size: 4em;
-  text-align: center;
-  line-height: 1; /* 텍스트의 줄 간격 설정 */
-  position: relative; /* 상대적인 위치 지정 */
-  top: 50%; /* 상단 위치를 부모 요소의 50% 지점으로 설정 */
-  transform: translateY(50%); /* 요소를 자기 자신의 높이의 50%만큼 아래로 이동 */
+  font-size: 30%; /* 글자 크기 */
 }
     </style>
 </head>
 <body>
 <div id="timer">
-    <div class="days"> 
-        <div id="days" class="numbers"> </div>days</div> 
+    <div id="days" class="numbers"> </div>days 
 </div>
 </body>
 <script>
