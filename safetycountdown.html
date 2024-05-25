@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:700&display=swap">
     <title>Document</title>
     <style>
 body {
@@ -20,11 +20,8 @@ body {
   text-align: center;
   text-transform: uppercase;
   font-family: 'Lato', sans-serif;
-  font-size: 1em; /* 글자 크기 */
+  font-size: .7em;
   letter-spacing: 5px;
-  position: relative; /* 상대적인 위치 지정 */
-  top: 50%; /* 상단 위치를 부모 요소의 50% 지점으로 설정 */
-  transform: translateY(50%); /* 요소를 자기 자신의 높이의 50%만큼 아래로 이동 */
 }
 
 .days {
@@ -39,21 +36,34 @@ body {
   box-sizing: border-box; /* 패딩과 테두리를 요소의 전체 크기에 포함 */
 }
 
-.numbers, #timer {
+.numbers, .prefix {
   font-family: 'Montserrat', sans-serif;
-  font-size: 30%; /* 글자 크기 */
+  font-weight: 700; /* 굵은체 설정 */
+  color: #FFFFFF; /* 폰트 색상 */
+  font-size: 4em;
+  text-align: center;
+  line-height: 1; /* 텍스트의 줄 간격 설정 */
+  position: relative; /* 상대적인 위치 지정 */
+  top: 50%; /* 상단 위치를 부모 요소의 50% 지점으로 설정 */
+  transform: translateY(50%); /* 요소를 자기 자신의 높이의 50%만큼 아래로 이동 */
+}
+
+.prefix {
+  display: inline-block;
+  margin-right: 20px;
 }
     </style>
 </head>
 <body>
 <div id="timer">
-    <div id="days" class="numbers"> </div>days 
+    <div class="days"> 
+        <div class="prefix">-</div>
+        <div id="days" class="numbers"> </div>days</div> 
 </div>
 </body>
 <script>
-const targetDate = new Date('2024-12-01').getTime();
-
 function updateTimer() {
+    const targetDate = new Date('2024-12-01').getTime();
     const now = new Date().getTime();
     const difference = targetDate - now;
     const days = Math.ceil(difference / (1000 * 60 * 60 * 24));
@@ -64,7 +74,7 @@ function updateTimer() {
 // 초기 실행
 updateTimer();
 
-// 1초마다 업데이트
-setInterval(updateTimer, 1000);
+// 12시간마다 업데이트
+setInterval(updateTimer, 12 * 60 * 60 * 1000);
 </script>
 </html>
