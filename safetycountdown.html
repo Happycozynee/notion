@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:700|Montserrat:700&display=swap">
     <title>Document</title>
     <style>
 body {
@@ -24,17 +24,16 @@ body {
   letter-spacing: 5px;
 }
 
-.days-container {
-  display: flex;
-  align-items: center;
-}
-
-.days-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700; /* 굵은체 설정 */
-  color: #FFFFFF; /* 폰트 색상 */
-  font-size: 4em;
-  margin-right: 10px;
+.days {
+  display: inline-block;
+  padding: 20px;
+  width: 300px; /* 가로 크기 설정 */
+  height: 300px; /* 세로 크기 설정 */
+  border-radius: 5px;
+  background: url('https://i.ibb.co/qBf87c9/1-001.png') no-repeat center center; /* 배경 이미지 설정 */
+  background-size: cover; /* 이미지가 전체 배경을 덮도록 조절 */
+  border: 2px solid #EEEEEE; /* 테두리 색상 */
+  box-sizing: border-box; /* 패딩과 테두리를 요소의 전체 크기에 포함 */
 }
 
 .numbers {
@@ -44,34 +43,34 @@ body {
   font-size: 4em;
   text-align: center;
   line-height: 1; /* 텍스트의 줄 간격 설정 */
-  position: relative; /* 상대적인 위치 지정 */
-  top: 50%; /* 상단 위치를 부모 요소의 50% 지점으로 설정 */
-  transform: translateY(50%); /* 요소를 자기 자신의 높이의 50%만큼 아래로 이동 */
+  margin-top: 20px; /* 텍스트가 상자 중앙에 오도록 여백 조정 */
 }
     </style>
 </head>
 <body>
 <div id="timer">
-    <div class="days-container">
-        <div class="numbers" id="days"> </div>
-        <div class="days-text">DAYS</div>
-    </div> 
+    <div class="days"> 
+        <div id="days" class="numbers"> </div>days</div> 
 </div>
 </body>
 <script>
-function updateTimer() {
-    const targetDate = new Date('2024-12-01').getTime();
-    const now = new Date().getTime();
-    const difference = targetDate - now;
-    const days = Math.ceil(difference / (1000 * 60 * 60 * 24));
+const year = new Date().getFullYear();
+const myDate = new Date('Oct 15, 2024 00:00:00');
+console.log(myDate);
 
-    document.getElementById("days").innerHTML = days;
-}
+// countdown
+let timer = setInterval(function() {
+  // get today's date
+  const today = new Date().getTime();
 
-// 초기 실행
-updateTimer();
+  // get the difference
+  const diff = myDate - today;
 
-// 12시간마다 업데이트
-setInterval(updateTimer, 12 * 60 * 60 * 1000);
+  // math
+  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  // display
+  document.getElementById("days").innerHTML=days
+}, 1000);
 </script>
 </html>
