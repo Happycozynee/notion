@@ -53,23 +53,22 @@ body {
 </div>
 </body>
 <script>
-const year = new Date().getFullYear();
-const myDate = new Date('Dec 5, 2026 00:00:00');
-console.log(myDate);
+  // 달성 기준: 2026-12-04 24:00 = 2026-12-05 00:00 (KST)
+  const target = new Date('2026-12-05T00:00:00+09:00');
 
-// countdown
-let timer = setInterval(function() {
-  // get today's date
-  const today = new Date().getTime();
+  function update() {
+    const now = new Date();
 
-  // get the difference
-  const diff = myDate - today;
+    // "오늘 00:00" 기준으로 D-카운트
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-  // math
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const diff = target - todayStart;
+    const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
 
-  // display
-  document.getElementById("days").innerHTML=days
-}, 1000);
+    document.getElementById("days").innerHTML = days;
+  }
+
+  update();
+  setInterval(update, 1000);
 </script>
 </html>
